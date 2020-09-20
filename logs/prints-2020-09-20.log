@@ -1,0 +1,10 @@
+16:42:47.876 [main] INFO  stepDefinitions.BlogsTestSteps - The Creditor Watch blog Risk Management category is selected
+16:42:50.722 [main] INFO  stepDefinitions.BlogsTestSteps - The blog post How to Avoid the Preference Payment Trap is now displayed
+16:43:33.950 [main] INFO  stepDefinitions.BlogsTestSteps - Driver is initialized
+16:43:39.619 [main] INFO  stepDefinitions.BlogsTestSteps - The Creditor watch home page is launched
+16:43:42.114 [main] INFO  stepDefinitions.BlogsTestSteps - The Creditor Watch blog page is loaded
+16:43:42.291 [main] INFO  stepDefinitions.BlogsTestSteps - The Creditor Watch blog Due Diligence category is selected
+16:43:45.755 [main] INFO  stepDefinitions.BlogsTestSteps - The blog post Company Financial Statements is now displayed
+16:45:32.554 [main] INFO  stepDefinitions.BlogsTestSteps - Driver is initialized
+16:45:38.448 [main] INFO  stepDefinitions.BlogsTestSteps - The Creditor watch home page is launched
+16:45:41.242 [main] INFO  stepDefinitions.BlogsTestSteps - The Creditor Watch blog page is loaded
