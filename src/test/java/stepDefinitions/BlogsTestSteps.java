@@ -2,6 +2,7 @@ package stepDefinitions;
 
 
 import cucumber.api.java.After;
+import cucumber.api.java.Before;
 import cucumber.api.java.en.And;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
@@ -11,12 +12,12 @@ import pageObjects.BlogPage;
 import pageObjects.HomePage;
 
 import java.io.FileInputStream;
+import java.io.IOException;
 import java.util.Properties;
 import java.util.concurrent.TimeUnit;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-
 import org.junit.runner.RunWith;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
@@ -24,21 +25,22 @@ import org.openqa.selenium.firefox.FirefoxDriver;
 
 
 @RunWith(Cucumber.class)
-public class BlogsTestSteps{
+public class BlogsTestSteps {
 	
-	WebDriver driver;
+	public WebDriver driver;
 	public Properties prop;
 	HomePage home;
 	BlogPage blog;
-	 private static final Logger log = LogManager.getLogger(BlogsTestSteps.class.getName());
-	 
-	 
-    @Given("^I am on creditor watch home page$")
-    public void i_am_on_creditor_watch_home_page() throws Throwable {
-    	Properties prop = new Properties();
+	private static final Logger log = LogManager.getLogger(BlogsTestSteps.class.getName());
+
+	
+	@Before
+	public void initializeDriver() throws IOException
+	{
+
+		prop = new Properties();
 		FileInputStream fis = new FileInputStream("src/test/java/resources/data.properties");
 		prop.load(fis);
-		
 		String browserName = prop.getProperty("browser");
 		int timeOut = Integer.parseInt(prop.getProperty("implicitTimeout"));
 		
@@ -53,10 +55,14 @@ public class BlogsTestSteps{
 			driver = new FirefoxDriver();
 		}
     	log.info("Driver is initialized");
+    	driver.manage().timeouts().implicitlyWait(timeOut, TimeUnit.SECONDS);	
+    }
+	
+    @Given("^I am on creditor watch home page$")
+    public void i_am_on_creditor_watch_home_page() throws Throwable {
     	driver.get(prop.getProperty("baseURL"));
     	driver.manage().window().maximize();
     	log.info("The Creditor watch home page is launched");
-    	driver.manage().timeouts().implicitlyWait(timeOut, TimeUnit.SECONDS);	
     }
 
     @When("^I click on Blog link$")
@@ -85,10 +91,9 @@ public class BlogsTestSteps{
     	
     }
     
-    
     @After 
     public void cleanUp(){ 
     	driver.quit(); 
     	} 
-
+    
 }
